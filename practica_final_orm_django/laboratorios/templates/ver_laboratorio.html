@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load bootstrap5 static %}
+
+{% block head %} 
+<title>Ver Laboratorio</title>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{% static 'image/laboratorio.jpg' %}" alt="{{ laboratorio.nombre }}" class="img-fluid rounded img-thumbnail" width="800" height="900">
+        </div>
+        <div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
+            <h1 class="display-4 font-weight-bold">{{ laboratorio.nombre }}</h1>
+            <p class="lead">Ciudad: {{ laboratorio.ciudad }}</p>
+            <p class="lead">País: {{ laboratorio.pais }}</p>
+            <div class="btn-group d-flex mt-4" role="group">
+                <a href="{% url 'editar_laboratorio' laboratorio.pk %}" class="btn btn-primary btn-lg btn-block">Editar</a>
+                <a href="{% url 'eliminar_laboratorio' laboratorio.pk %}" class="btn btn-danger btn-lg btn-block">Eliminar</a>
+                <a href="{% url 'listar_laboratorios' %}" class="btn btn-secondary btn-lg btn-block">Volver al listado</a>
+            </div>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}
+

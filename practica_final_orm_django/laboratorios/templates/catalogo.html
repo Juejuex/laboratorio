@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<title>Catálogo de Productos</title>
+{% endblock %}
+
+{% block content %}
+<div class="container my-5">
+    <h3 class="text-center mb-4">Nuestros productos</h3>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+            <div class="card">
+                <img src="{% static 'image/1.jpg' %}" alt="Producto 1" class="card-img-top img-fluid" style="height: 200px;">
+                <div class="card-body">
+                    <h4 class="card-title">Producto 1</h4>
+                    <p class="mb-2"><strong>Precio</strong> {{ producto.p_venta }}</p>
+                    <p class="card-text">Una breve y vaga descripción del producto 1.</p>
+                    <a href="{% url 'detalle_producto' 1 %}" class="btn btn-primary">Ver más detalles</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="{% static 'image/2.jpg' %}" alt="Producto 2" class="card-img-top img-fluid" style="height: 200px;">
+                <div class="card-body">
+                    <h4 class="card-title">Producto 2</h4>
+                    <p class="mb-2"><strong>Precio</strong> {{ producto.p_venta }}</p>
+                    <p class="card-text">Una breve y vaga descripción del producto 2.</p>
+                    <a href="{% url 'detalle_producto' 2 %}" class="btn btn-primary">Ver más detalles</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <img src="{% static 'image/3.jpg' %}" alt="Producto 3" class="card-img-top img-fluid" style="height: 200px;">
+                <div class="card-body">
+                    <h4 class="card-title">Producto 3</h4>
+                    <p class="mb-2"><strong>Precio</strong> {{ producto.p_venta }}</p>
+                    <p class="card-text">Una breve y vaga descripción del producto 3.</p>
+                    <a href="{% url 'detalle_producto' 3 %}" class="btn btn-primary">Ver más detalles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

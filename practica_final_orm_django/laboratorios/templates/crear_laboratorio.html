@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load bootstrap5 static %}
+
+{% block head %} 
+<title>Crear Laboratorio</title> 
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="text-3xl font-bold text-center text-primary">Crear Laboratorio</h1>
+    <form method="post" class="mt-4 mx-auto" style="max-width: 400px;"> <!-- Añadimos la clase "mx-auto" y un estilo para centrar y ajustar el ancho del formulario -->
+        {% csrf_token %}
+        {% for field in form %}
+        <div class="form-group">
+            {{ field.label_tag }}
+            {{ field }}
+        </div>
+        {% endfor %}
+        <div class="row">
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-primary btn-block mt-3">Guardar</button> <!-- Añadimos la clase "btn-block" para que el botón ocupe todo el ancho de su contenedor -->
+            </div>
+            <div class="col-md-6">
+                <a href="{% url 'listar_laboratorios' %}" class="btn btn-secondary btn-block mt-3">Volver al listado</a> <!-- Añadimos la clase "btn-block" para que el botón ocupe todo el ancho de su contenedor -->
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

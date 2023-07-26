@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load bootstrap5 static %}
+
+{% block head %}
+<title>Eliminar Laboratorio</title>
+{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="text-4xl font-bold text-center text-danger">¿Estás seguro de que deseas eliminar el laboratorio "{{ laboratorio.nombre }}"?</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{% static 'image/laboratorio.jpg' %}" alt="{{ laboratorio.nombre }}" class="img-fluid rounded img-thumbnail" width="800" height="900">
+        </div>
+        <div class="col-md-6">
+            <form method="post" class="max-w-lg p-4 bg-white rounded shadow-md">
+                {% csrf_token %}
+                <p class="text-center mb-4">Información del laboratorio:</p>
+                <p class="mb-2"><strong>Nombre:</strong> {{ laboratorio.nombre }}</p>
+                <p class="mb-2"><strong>Ciudad:</strong> {{ laboratorio.ciudad }}</p>
+                <p class="mb-4"><strong>País:</strong> {{ laboratorio.pais }}</p>
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-danger btn-m">Eliminar</button>
+                    <a href="{% url 'ver_laboratorio' laboratorio.pk %}" class="btn btn-primary btn-sm">Cancelar</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

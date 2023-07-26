@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load bootstrap5 static %}
+
+{% block head %} 
+<title>Listar Laboratorios</title> 
+{% endblock %}
+
+{% block content %}
+
+<div class="container mx-auto px-4 py-8">
+  <h1 class="text-center text-3xl font-bold">Laboratorios</h1>
+  <div class="text-end mb-4">
+    <a href="{% url 'crear_laboratorio' %}" class="btn btn-primary">Crear</a>
+  </div>
+  <table class="table table-striped table-primary mt-4">
+      <!-- Agregamos la clase table-primary para tener el mismo color de fondo que la navbar -->
+      <thead>
+          <tr>
+              <th>Nombre</th>
+              <th>Ciudad</th>
+              <th>País</th>
+              <th>Acciones</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for lab in laboratorios %}
+          <tr>
+              <td><a href="{% url 'ver_laboratorio' lab.pk %}">{{ lab.nombre }}</a></td>
+              <td>{{ lab.ciudad }}</td>
+              <td>{{ lab.pais }}</td>
+              <td>
+                  <a href="{% url 'editar_laboratorio' lab.pk %}" class="btn btn-primary btn-sm">Editar</a> |
+                  <a href="{% url 'eliminar_laboratorio' lab.pk %}" class="btn btn-danger btn-sm">Eliminar</a>
+              </td>
+          </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+</div>
+
+{% endblock %}
+
+
